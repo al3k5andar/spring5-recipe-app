@@ -1,0 +1,11 @@
+com\am\spring\recipespringboot\domain\Category.class
+com\am\spring\recipespringboot\repositories\CategoryRepository.class
+com\am\spring\recipespringboot\service\RecipeServiceImpl.class
+com\am\spring\recipespringboot\domain\Ingredient.class
+com\am\spring\recipespringboot\domain\Difficulty.class
+com\am\spring\recipespringboot\domain\Notes.class
+com\am\spring\recipespringboot\domain\Recipe.class
+com\am\spring\recipespringboot\repositories\RecipeRepository.class
+com\am\spring\recipespringboot\domain\UnitOfMeasure.class
+com\am\spring\recipespringboot\repositories\UnitOfMeasureRepository.class
+com\am\spring\recipespringboot\service\RecipeService.class

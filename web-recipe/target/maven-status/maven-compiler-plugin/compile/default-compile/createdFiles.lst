@@ -1,0 +1,4 @@
+com\am\spring\recipespringboot\controllers\RecipeController.class
+com\am\spring\recipespringboot\controllers\IndexController.class
+com\am\spring\recipespringboot\RecipeSpringBootApplication.class
+com\am\spring\recipespringboot\bootstrap\DataLoader.class
