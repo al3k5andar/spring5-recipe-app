@@ -43,6 +43,7 @@ public class RecipeControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/recipe/show/1")) // Request controller mapping
                 .andExpect(MockMvcResultMatchers.status().isOk()) // Request status -- example 200
-                .andExpect(MockMvcResultMatchers.view().name("recipe/show")); // Request index page of controller
+                .andExpect(MockMvcResultMatchers.view().name("recipe/show"))
+                .andExpect(MockMvcResultMatchers.model().attributeExists("recipe")); // Request index page of controller
     }
 }
