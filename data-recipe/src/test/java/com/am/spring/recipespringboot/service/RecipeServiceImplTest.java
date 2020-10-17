@@ -2,6 +2,7 @@ package com.am.spring.recipespringboot.service;
 
 import com.am.spring.recipespringboot.domain.Recipe;
 import com.am.spring.recipespringboot.repositories.RecipeRepository;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -9,9 +10,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
-
-import static org.junit.Assert.assertEquals;
 
 public class RecipeServiceImplTest {
 
@@ -28,19 +28,36 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void findAll() {
-
+    public void findByIdTest(){
         Recipe recipe= new Recipe();
+        recipe.setId(1L);
+
+        Optional<Recipe> optionalRecipe= Optional.of(recipe);
+
+        Mockito.when(recipeRepository.findById(Mockito.anyLong())).thenReturn(optionalRecipe);
+
+        Recipe recipeReturned= recipeService.findById(1L);
+
+        Assert.assertNotNull("Recipe not found", recipeReturned);
+        Mockito.verify(recipeRepository, Mockito.times(1)).findById(Mockito.anyLong());
+        Mockito.verify(recipeRepository,Mockito.never()).findAll();
+
+    }
+
+    @Test
+    public void getRecipeTest(){
+        Recipe recipe= new Recipe();
+        recipe.setId(1L);
+
         Set<Recipe> recipes= new HashSet<>();
         recipes.add(recipe);
 
-//        Tell mockito object what to return when is recipeRepository called
         Mockito.when(recipeRepository.findAll()).thenReturn(recipes);
 
-        Set<Recipe> recipeSet= recipeService.findAll();
-        assertEquals(recipeSet.size(), 1);
+        Set<Recipe> myRecipes= recipeService.findAll();
 
-//        Verify how many times is Recipe Repository called
+        Assert.assertEquals(1, myRecipes.size());
         Mockito.verify(recipeRepository, Mockito.times(1)).findAll();
+        Mockito.verify(recipeRepository,Mockito.never()).findById(Mockito.anyLong());
     }
 }
