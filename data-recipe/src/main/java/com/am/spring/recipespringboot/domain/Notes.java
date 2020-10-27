@@ -13,7 +13,7 @@ public class Notes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "recipe_notes")
     @Lob

@@ -12,7 +12,7 @@ public class Recipe
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String description;
     private int prepTime;
     private int cookTime;
